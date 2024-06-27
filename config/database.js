@@ -17,20 +17,20 @@ const initDb = async () => {
       // await sequelize.sync({ force: true });
       // console.log('All models were synchronized successfully.');
       // Synchronisation des tables dans l'ordre approprié
-        sequelize.authenticate().then(() => {
+      sequelize.authenticate().then(() => {
           User = require('./models/User')(sequelize, Sequelize);
           Recipe = require('./models/Recipe')(sequelize, Sequelize);
 
-          // Sync User table first
+      // Sync User table first
           return User.sync();
-        }).then(() => {
+      }).then(() => {
           // Then sync Recipe table which references User
           return Recipe.sync();
-        }).then(() => {
+      }).then(() => {
           console.log('Tables synchronized successfully');
-        }).catch(err => {
+      }).catch(err => {
           console.error('Error synchronizing tables:', err);
-        });
+      });
     } catch (error) {
       console.error('Unable to connect to the database:', error);
     }
