@@ -5,14 +5,14 @@ import { errorHandler } from './middlewares/errorHandler.js'; // Middleware pour
 import bodyParser from 'body-parser'; // Middleware pour analyser le corps des requêtes entrantes
 import userRoute from './routes/userRoutes.js'; // Routeur pour les routes d'authentification
 import recipeRoute from './routes/recipeRoutes.js'; // Routeur pour les routes de gestion des recettes
-import { corsConfig } from './middlewares/corsConfig.js';
+import cors from 'cors';
 
 // Chargement des variables d'environnement
 config();
 
 const app = express();
 
-app.use(corsConfig());
+app.use(cors());
 
 // Utilisation de bodyParser pour analyser les requêtes JSON entrantes
 app.use(bodyParser.json());
