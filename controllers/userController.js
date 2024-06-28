@@ -51,7 +51,7 @@ export const registerUser = async (req, res) => {
       }
   
       // Si le mot de passe est correct, création d'un token JWT
-      const token = jwt.sign({ username: user.username, id: user.id }, secret, { expiresIn: '15min' });
+      const token = jwt.sign({ username: user.username, id: user.id }, secret, { expiresIn: '1d' });
   
       res.cookie('token', token, { httpOnly: true });
   
